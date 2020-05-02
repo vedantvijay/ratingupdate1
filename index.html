@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="theme-color" content="black"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>movie</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="d">
+        
+<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fencrypted-tbn3.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcTvGNXRmC76GfZrgM7P_oY0nZqg00bsjC7E5zu4dZBReXiHD_kt&psig=AOvVaw24eEPvDjgZc7yM_CxnYOQd&ust=1588023157108000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMiG8LOFh-kCFQAAAAAdAAAAABAD" alt="background" class="back">
+    </div>
+    <div class="ggg">
+        <i class="fa fa-bars" id="gg" style='font-size:30px; color:rgb(255, 255, 255);'></i>
+    </div>
+<div class="ff">
+    <i class="fa fa-search" id="ved" onclick="search()" style='font-size:30px; color:rgb(255, 255, 255);'></i>
+   
+    <div class="foot">
+        
+<h1 class="veni">Venom</h1>
+<p class="pa">Action, Sci-Fi, Thriller</p>
+<p class="direc">Characters</p>
+<div id="nam">
+    <p class="dog">Director: </p>
+    <p class="name">  vedant vijay</p>
+    <p></p>
+</div>
+<div id="actors">
+    <p class="cas">Cast: </p>
+    <p class="cast">  vedant vijay</p>
+    <p></p>
+    </div>
+<h3  class="story">Storyline</h3>
+<h3 class="despo">A failed reporter is bonded to an alien entity, one of many symbiotes who have invaded Earth. But the being takes a liking to Earth and decides to protect it.</h3>
+    </div>
+</div>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+body{
+    background: rgb(0, 0, 0);
+}
+.cas{
+    color: antiquewhite;
+font-size: 16px;
+
+}
+#actors{
+    font-size: 15px;
+    display: inline-flex;
+    position: relative;
+    left: 20px;
+    top: 0px;
+    color: rgb(187, 184, 184);
+}
+.dog{
+color: antiquewhite;
+font-size: 16px;
+padding-right: 9px;
+}
+
+#nam{
+    font-size: 15px;
+    display: inline-flex;
+    position: relative;
+    left: 20px;
+    top: 0px;
+    color: rgb(187, 184, 184);
+}
+#ved{
+  position: relative;
+  top: -15px;
+  left: 320px;
+}
+#gg{
+    position: relative;
+left: 30px;
+top: 20px;
+}
+.back{
+    position: fixed;
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+}
+.foot{
+    background: linear-gradient(transparent, black 15%);
+        height: fit-content;
+        width: 100%;
+        position: absolute;
+        margin-top: auto;
+        top: 20pc;
+        padding: 20px;
+        color: rgb(255, 255, 255);
+        overflow-x: hidden;
+}
+.veni{
+    color: antiquewhite;
+    font-family: 'Noto Sans JP', sans-serif;
+    position: relative;
+    top: 0px;
+    font-size: 50px;
+    margin: auto;
+    left: 34px;
+    overflow-x: hidden;
+
+
+}
+.pa{
+    color:  rgb(255, 182, 45);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 15px;
+    position: relative;
+    top: 0px;
+    left: 30pt;
+
+}
+.direc{
+    color: aliceblue;
+    font-family: 'Noto Sans JP', sans-serif;
+    position: relative;
+top: 0px;
+font-size: 20px;
+
+left: 20px;
+}
+.story{
+    color: aliceblue;
+    font-family: 'Noto Sans JP', sans-serif;
+    position: relative;
+top: 0px;
+left: 20px;
+}
+
+.despo{
+    color: rgb(211, 208, 208);
+    font-family: 'Montserrat', sans-serif; 
+    position: relative;
+    font-size: 20px;
+    margin: auto;
+    top: 0px;
+    left: 15px;
+
+
+}
+
+
+    </style>
+    <script>
+      
+  window.onload = search();
+function search(){
+    
+    var x = prompt("ENTER MOVIE NAME");
+    var api = "https://www.omdbapi.com/?apikey=47d808d1&t={"+x+"}&plot=full";
+    document.querySelector(".back").style.height = screen.height + "px";
+    $.getJSON(api, response);
+    setInterval(() => {
+        
+        document.querySelector(".back").style.height =
+            screen.height - window.scrollY / 7 + "px";
+      }, 10);
+    
+}
+function response(data){
+    console.log(data)
+    document.querySelector('.veni').innerHTML = data.Title;
+    document.querySelector('.pa').innerHTML = data.Year
+    document.querySelector('.back').src = data.Poster;
+    document.querySelector('.pa').innerHTML = data.Genre;
+    document.querySelector('.cast').innerHTML = data.Actors;
+    document.querySelector('.name').innerHTML = data.Director;
+    document.querySelector('.despo').innerHTML = data.Plot;
+    
+    
+}
+    </script>
+    
+</body>
+</html>
